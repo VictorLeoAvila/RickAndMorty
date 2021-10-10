@@ -12,14 +12,12 @@ import com.rickandmorty.presentation.HomeViewModel
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
 
-private const val BASE_URL = "https://rickandmortyapi.com/api/"
-
 internal object CharacterModule {
 
     val characterModule = module {
         factory<CharacterDataSource> {
             CharacterDataSourceImpl(
-                characterService = HttpClient(BASE_URL).create(CharacterService::class)
+                characterService = HttpClient().create(CharacterService::class)
             )
         }
         factory<CharacterRepository> {

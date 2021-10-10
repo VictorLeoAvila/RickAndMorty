@@ -1,5 +1,6 @@
 package com.rickandmorty.data.api
 
+import com.rickandmorty.domain.utils.BASE_URL
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
@@ -12,9 +13,9 @@ private val interceptor = HttpLoggingInterceptor().apply {
 }
 private val client = OkHttpClient.Builder().addInterceptor(interceptor).build()
 
-class HttpClient(url: String) {
+class HttpClient {
     private val retrofit: Retrofit = Retrofit.Builder()
-        .baseUrl(url)
+        .baseUrl(BASE_URL)
         .addConverterFactory(gsonConverter)
         .client(client)
         .build()
